@@ -9,7 +9,7 @@
 	- Package Management
 	- Source Package Extraction and Compilation
 
-Submitted an [issue](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/100) for ruyisdk-vscode-extension-0.1.0
+Submitted an [issue #100](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/100) for ruyisdk-vscode-extension-0.1.0
 - Add an issue for ruyisdk-vscode-extension-0.1.0.
 	- Virtual Environment Switching
 	- Incorrect Icon State Update
