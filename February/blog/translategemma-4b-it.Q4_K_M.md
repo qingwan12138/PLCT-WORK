@@ -16,6 +16,7 @@ $ sudo yum install -y git make cmake gcc-c++ wget
 ## 下载并编译`llama.cpp`
 ### 下载`llama.cpp`
 ```bash
+$ cd root/Desktop
 $ git clone https://github.com/ggml-org/llama.cpp
 $ cd llama.cpp
 $ mkdir build && cd build
@@ -24,5 +25,21 @@ $ mkdir build && cd build
 ```bash
 $ cmake .. -DGGML_RVV=OFF
 $ cmake --build . --config Release -j4
+# 其中核心数以实际为准
 ```
-![alt text](image/llama.cpp编译100%.png)
+![alt text](image/编译百分百.png)
+
+## 模型下载
+### 从huggingface下载translategemma-4b-it.Q4_K_M模型
+
+```bash
+$ cd root/Desktop
+$ wget  https://huggingface.co/mradermacher/translategemma-4b-it-GGUF/resolve/main/translategemma-4b-it.Q4_K_M.gguf  translategemma-4b-it.Q4_K_M.gguf
+```
+
+## 模型运行
+```bash
+# 编译完成后，可执行文件在 build/bin/ 目录下
+$ ./bin/llama-cli -m root/Desktop/translategemma-4b-it.Q4_K_M.gguf
+```
+![模型成功加载](image/模型成功加载.png)
