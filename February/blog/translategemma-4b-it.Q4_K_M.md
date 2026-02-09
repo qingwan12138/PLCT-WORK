@@ -1,11 +1,11 @@
-# **在 OpenEuler RISC-V架构的qemu虚拟机上构建 translategemma-4b-it.Q4_K_M模型**
-本文档详细说明了如何在运行RISC-V架构  OpenEuler 系统的 qemu 虚拟机上从源代码构建 translategemma-4b-it.Q4_K_M 。
+# **在 OpenEuler RISC-V架构的qemu虚拟机上构建 TranslateGemma-4b-it.Q4_K_M模型**
+本文档详细说明了如何在运行RISC-V架构  OpenEuler 系统的 qemu 虚拟机上从源代码构建 TranslateGemma-4b-it.Q4_K_M 。
 ## 准备
 系统版本：`RISC-V 架构 OpenEuler-24.03 LTS SP2`
 
 镜像下载：[OpenEuler-24.03](https://www.openeuler.org/zh/download/#openEuler%2024.03%20LTS%20SP2)
 
-模型：`translategemma-4b-it.Q4_K_M`
+模型：`TranslateGemma-4b-it.Q4_K_M`
 
 ## 安装依赖
 ```bash
@@ -30,7 +30,7 @@ $ cmake --build . --config Release -j4
 ![alt text](image/编译百分百.png)
 
 ## 模型下载
-### 从huggingface下载translategemma-4b-it.Q4_K_M模型
+### 从huggingface下载TranslateGemma-4b-it.Q4_K_M模型
 
 ```bash
 $ cd root/Desktop
