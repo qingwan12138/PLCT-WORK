@@ -4,7 +4,7 @@
 ## 安装依赖
 ```bash
 $ sudo dnf update
-$ sudo dnf install -y  git cmake gcc-c++ python3  freetype-devel libpng-devel mesa-libGL-devel libX11-devel wavpack-devel 
+$ sudo dnf install -y  git cmake gcc-c++ python3  freetype-devel libpng-devel mesa-libGL-devel libX11-devel wavpack-devel SDL2-devel
 ```
 
 ## 手动编译 SDL2-devel 
