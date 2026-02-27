@@ -13,10 +13,10 @@
 ### Issue [#100](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/100)
 - Reported a UI  issue where the virtual environment icon to the left of the name fails to switch upon activation.
 
-### Issue [#107](https://github.com/ruyisdk/ruyisdk-eclipse-plugins/issues/107)
+### Issue [#107](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/107)
 - Reported a synchronization issue where the UI  fails to update accordingly when activating or deactivating the virtual environment within the terminal.
 
-### Issue [#108](https://github.com/ruyisdk/ruyisdk-eclipse-plugins/issues/108)
+### Issue [#108](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/108)
 - Reported a version detection issue where the system incorrectly prompts for an update when a newer version of ruyi is already installed alongside an older one.
 
 ###
