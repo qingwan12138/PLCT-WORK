@@ -7,7 +7,9 @@
 
 
 ## 2. Issues
-### [Issue #109](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/122)
+### [Issue #115](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/115)
+- 旧版本ruyi提示更新冲突
+### [Issue #122](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/122)
 - 反馈 Profiles 列表解析中文
 
 ## 3. Pull Requests
