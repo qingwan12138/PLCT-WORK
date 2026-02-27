@@ -17,7 +17,7 @@
 - Reported a synchronization issue where the UI  fails to update accordingly when activating or deactivating the virtual environment within the terminal.
 
 ### Issue [#108](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/108)
-- Reported a version detection issue where the system incorrectly prompts for an update when a newer version of ruyi is already installed alongside an older one.
+- The read status on the news UI has not been updated.
 
 ###
 
