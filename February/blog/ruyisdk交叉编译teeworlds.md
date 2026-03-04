@@ -118,7 +118,7 @@ $ ruyi-qemu -cpu rv64 -L ~/oe-sysroot ./teeworlds_srv
 ### 启动客户端
 ```bash
 $ xhost +local:
-$ DISPLAY=$DISPLAY LIBGL_ALWAYS_SOFTWARE=1 ruyi-qemu -cpu c910 -L ~/oe-sysroot ./teeworlds
+$ DISPLAY=$DISPLAY LIBGL_ALWAYS_SOFTWARE=1 ruyi-qemu -cpu rv64 -L ~/oe-sysroot ./teeworlds
 ```
 
 ![客户端启动](image/客户端启动.png)
