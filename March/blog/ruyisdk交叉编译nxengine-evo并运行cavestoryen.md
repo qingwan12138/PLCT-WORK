@@ -6,12 +6,38 @@ $ git clone --recursive https://github.com/nxengine/nxengine-evo.git
 ```
 
 ## 在 x86 Ubuntu 上构建 openEuler RISC-V Sysroot(同teeworlds) 
-### 具体内容暂定，先空着
+### 安装必要的模拟器和包管理工具
+```bash
+$ sudo apt update
+$ sudo apt install -y qemu-user-static dnf git cmake
+```
+### 创建并初始化 openEuler 的目录结构
+```bash
+$ mkdir -p ~/oe-sysroot/usr/bin
+$ sudo cp /usr/bin/qemu-riscv64-static ~/oe-sysroot/usr/bin/
+```
+
+### 使用 dnf 填充 openEuler 系统
+```bash
+$ sudo dnf --installroot=$HOME/oe-sysroot \
+           --forcearch=riscv64 \
+           --releasever=24.03 \
+            --repofrompath=oe-base,https://mirrors.huaweicloud.com/openeuler/openEuler-24.03-LTS/OS/riscv64/ \
+            --repofrompath=oe-update,https://mirrors.huaweicloud.com/openeuler/openEuler-24.03-LTS/update/riscv64/ \
+            --disablerepo=* --enablerepo=oe-base,oe-update \
+            --nogpgcheck \
+            --setopt=install_weak_deps=False \
+            install -y bash coreutils dnf openEuler-release
+```
 
 ### 进入 openEuler 环境安装依赖库
+```bash
+$ sudo chroot ~/oe-sysroot /bin/bash
+$ dnf install -y SDL2-devel freetype-devel libpng-devel wavpack-devel mesa-dri-drivers mesa-libGL-devel libX11-devel zlib-devel openssl-devel libXext-devel libXcursor-devel libXinerama-devel libXi-devel  --nogpgcheck --releasever=24.03
+```
+
 ![alt text](image/依赖需求.png)
 ### 其中sdl2全家桶需手动编译
-
 
 在依赖库目录下编写riscv64.toolchain文件(为了方便补充缺少的依赖手动编译riscv文件，我在依赖库目录下也创建了虚拟环境)
 ```bash
@@ -42,7 +68,7 @@ $ cd SDL2_mixer-2.6.3
 ```bash
 $ mkdir build && cd build
 $ cmake .. \
-  -DCMAKE_TOOLCHAIN_FILE=/home/cjh/桌面/openspades/riscv-toolchain.cmake \
+  -DCMAKE_TOOLCHAIN_FILE=/home/cjh/桌面/依赖库/riscv-toolchain.cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/home/cjh/oe-sysroot/usr
 ```
@@ -56,7 +82,8 @@ $ make DESTDIR=/home/cjh/oe-sysroot install
 
 ## 运用RuyiSDK 虚拟环境交叉编译
 ### 安装并激活 Ruyi 虚拟环境
-
+这一步可以根据你不同开发板的开发环境安装不同的虚拟环境进行编译，本文采取的是licheepi4a
+具体构建过程可参考(官网)[https://ruyisdk.org/docs/Package-Manager/intergration]
 ### 编译
 ```bash
 $ cd ~/桌面/nxengine-evo/build
