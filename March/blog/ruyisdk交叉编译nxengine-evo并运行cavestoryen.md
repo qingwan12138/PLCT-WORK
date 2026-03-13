@@ -75,7 +75,6 @@ $ cmake .. \
 
 编译并安装到 Sysroot
 ```bash
-$ make 
 $ make DESTDIR=/home/cjh/oe-sysroot install
 ```
 
