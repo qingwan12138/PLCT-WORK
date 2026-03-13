@@ -83,7 +83,7 @@ $ make DESTDIR=/home/cjh/oe-sysroot install
 ## 运用RuyiSDK 虚拟环境交叉编译
 ### 安装并激活 Ruyi 虚拟环境
 这一步可以根据你不同开发板的开发环境安装不同的虚拟环境进行编译，本文采取的是licheepi4a
-具体构建过程可参考(官网)[https://ruyisdk.org/docs/Package-Manager/intergration]
+具体构建过程可参考(官网)(https://ruyisdk.org/docs/Package-Manager/intergration)
 ### 编译
 ```bash
 $ cd ~/桌面/nxengine-evo/build
