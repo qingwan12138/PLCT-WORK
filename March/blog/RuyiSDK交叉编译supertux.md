@@ -45,7 +45,7 @@ $ make menuconfig
 在`Toolchain` -> `Toolchain` -> `Toolchain prefix`-> `riscv64-plctxthead-linux-gnu`
 
 (这里是交叉工具链的前缀)  
-以及一些工具链的相关参数，可以用`riscv64-plctxthead-linux-gnu-gcc -v`查到一些，如果填错也没关系，buildroot在make阶段报错会提醒的，之后再改也可以。
+以及一些工具链的相关参数，可以用 `riscv64-plctxthead-linux-gnu-gcc -v` 查到一些，如果填错也没关系，buildroot在make阶段报错会提醒的，之后再改也可以。
 
 ![alt text](image/工具链参数.png)
 
