@@ -35,17 +35,29 @@ $ make menuconfig
 
 
 #### 工具链选择
-在`Toolchain` -> `Toolchain type` -> `External toolchain`  
-在`Toolchain` -> `Toolchain` -> `Custom toolchain `  
-在`Toolchain` -> `Toolchain` -> ` Toolchain origin (Pre-installed toolchain)`->`/home/cjh/buildroot/ruyi-venv-sipeed-lpi4a`(这里是你当前虚拟环境工具链的路径，到虚拟环境即可，由于可能识别不到中文，建议放在主目录下即可)  
-在`Toolchain` -> `Toolchain` -> `Toolchain prefix`-> `riscv64-plctxthead-linux-gnu`(这里是交叉工具链的前缀)  
+在`Toolchain` -> `Toolchain type` -> `External toolchain`
+
+在`Toolchain` -> `Toolchain` -> `Custom toolchain `
+
+在`Toolchain` -> `Toolchain` -> ` Toolchain origin (Pre-installed toolchain)`->`/home/cjh/buildroot/ruyi-venv-sipeed-lpi4a`
+
+(这里是你当前虚拟环境工具链的路径，到虚拟环境即可，由于可能识别不到中文，建议放在主目录下即可)  
+在`Toolchain` -> `Toolchain` -> `Toolchain prefix`-> `riscv64-plctxthead-linux-gnu`
+
+(这里是交叉工具链的前缀)  
 以及一些工具链的相关参数，可以用`riscv64-plctxthead-linux-gnu-gcc -v`查到一些，如果填错也没关系，buildroot在make阶段报错会提醒的，之后再改也可以。
+
 ![alt text](image/工具链参数.png)
+
 ### 剩余选项
+
 ![alt text](image/剩余选项1.png)
+
 ### 依赖补充
 在`Target Packages`里可以根据分类选择你所需要的依赖即可，选择与否可以用空格确定，如果找不到的话，你也可以通过`/`键快速搜索确定位置
+
 ![快速搜索](image/快速搜索.png)
+
 ### 编译
 确定好所需依赖(如果有依赖没选上的make失败后也可以重新补充)后通过`ESC`退出确认配置
 ```bash
