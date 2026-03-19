@@ -91,9 +91,9 @@ set(ENV{PKG_CONFIG_SYSROOT_DIR} ${CMAKE_SYSROOT})
 set(ENV{PKG_CONFIG_PATH} "${CMAKE_SYSROOT}/usr/lib/pkgconfig") 
 ```
 ### supertux需要的一些依赖
-`sdl2 sdl2_image sdl2_mixer sdl2_ttf libcurl libogg libvorbis glm fmt physfs libX11`
-可能有所遗漏，如果缺少依赖的话请根据上文自行补充即可
-
+`sdl2 sdl2_image sdl2_mixer sdl2_ttf libcurl libogg libvorbis glm fmt physfs libX11 libpng openal`
+可能有所遗漏，如果缺少依赖的话请根据上文自行补充即可  
+(x11等相关驱动如果在sdl2编译后补充的话，需要重新编译sdl2)
 ### 交叉编译
 ```bash
 $ cmake .. -DCMAKE_TOOLCHAIN_FILE=../toolchain.cmake
