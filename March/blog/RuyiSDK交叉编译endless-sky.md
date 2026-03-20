@@ -99,6 +99,7 @@ set(ENV{PKG_CONFIG_PATH} "${CMAKE_SYSROOT}/usr/lib/pkgconfig")
 $ cmake .. -DCMAKE_TOOLCHAIN_FILE=../toolchain.cmake
 $ make -j$(nproc)
 ```
+![alt text](image/endless-sky文件属性.png)
 ###小问题  
 
 ![alt text](image/sdl2_image链接失败.png)
@@ -119,6 +120,7 @@ $ ruyi-qemu -cpu thead-c906 \
   -E LD_LIBRARY_PATH="/usr/lib:/lib:/usr/lib64/lp64d:/lib64/lp64d:." \
   ./endless-sky
 ```
+
 ![alt text](image/endless-sky加载1.png)
 ![alt text](image/endless-sky加载2.png)
 ![alt text](image/name.png)
