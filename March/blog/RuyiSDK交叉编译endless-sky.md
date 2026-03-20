@@ -119,4 +119,6 @@ $ ruyi-qemu -cpu thead-c906 \
   -E LD_LIBRARY_PATH="/usr/lib:/lib:/usr/lib64/lp64d:/lib64/lp64d:." \
   ./endless-sky
 ```
-
+![alt text](image/endless-sky加载1.png)
+![alt text](image/endless-sky加载2.png)
+![alt text](image/name.png)
