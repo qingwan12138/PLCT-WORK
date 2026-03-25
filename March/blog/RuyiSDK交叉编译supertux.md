@@ -16,7 +16,6 @@ $ git clone https://gitlab.com/buildroot.org/buildroot.git
 - 方法三
 ```bash
 # 从buildroot官网进行下载安装
-```bash
 https://buildroot.org/download.html
 ```
 ### 配置buildroot
