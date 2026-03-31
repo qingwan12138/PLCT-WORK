@@ -26,8 +26,10 @@
 - 通过ruyisdk虚拟环境构建运行 Endless-Sky
 
 ### [从零开始的ruyisdk之旅](https://github.com/qingwan12138/PLCT-WORK/blob/main/March/blog/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84ruyisdk%E4%B9%8B%E6%97%85.md)
-- 网站草案(仍需修改)
+- 网站废案(仍需修改)
 
+### [OpenRuyi+RuyiSDK](https://github.com/qingwan12138/PLCT-WORK/blob/main/March/blog/openRuyi%2BRuyiSDK.md)
+- 用OpenRuyi的rootfs与RuyiSDK交叉编译
 
 ## Blog
 ### [TeeWorlds](https://ruyisdk.cn/t/topic/2539)
