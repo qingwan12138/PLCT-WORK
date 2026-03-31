@@ -11,6 +11,7 @@ $ wget https://releases.openruyi.cn/creek/2026.03/rva23/openRuyi-2026.03-rootfs-
 ```
 ## Qemu
 ![alt text](image/Qemu-RVA23.png)
+
 因为 ubuntu 24.04 LTS 的软件源中的qemu版本过低，无法支持RVA23指令集，因此我们需要手动编译较高版本的qemu模拟器
 
 ### 依赖补充

@@ -122,5 +122,7 @@ $ ruyi-qemu -cpu thead-c906 \
 ```
 
 ![alt text](image/endless-sky加载1.png)
+
 ![alt text](image/endless-sky加载2.png)
+
 ![alt text](image/name.png)

@@ -113,5 +113,7 @@ $ LD_LIBRARY_PATH=~/oe-sysroot/usr/lib:~/oe-sysroot/usr/lib64 \
 $ ruyi-qemu -cpu rv64 -L ~/oe-sysroot ./nxengine-evo
 ```
 ![alt text](image/loading.png)
+
 ![alt text](image/启动页面.png)
+
 ![alt text](image/对话.png)
