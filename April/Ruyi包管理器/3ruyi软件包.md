@@ -1,0 +1,78 @@
+# Ruyi 软件包
+## Ruyi 软件包介绍
+Ruyi 软件包是一个将 RISC-V 开发所需的工具链、模拟器、系统镜像等核心资源进行标准化分类与集成的资源库。它旨在通过对六大功能分区的统一管理，为开发者提供开箱即用且版本匹配的完整开发资源保障。
+
+## 软件包的主要构成
+软件包的构成有如下：
+- toolchain(工具链)：
+  - 主流上游版本：提供标准的 gnu-upstream 与 llvm-upstream，确保与开源社区最新技术同步。
+  - 厂商与架构优化版：针对特定硬件深度定制，如专为 Milk-V 系列适配的工具链、支持平头哥 XuanTie (xthead) 指令扩展的编译器。
+  - plct实验室维护版本：包含 PLCT 实验室维护的实验性分支以及高性能计算专用的 xscc。
+- source(源码包)：
+提供经过验证的工具或库的源代码。在需要针对特定需求进行重构或在特殊环境下自行编译时，这些源码包确保了版本的一致性。  
+- emulator(模拟器)：
+为了让开发者在没有实体硬件的情况下也能进行开发，Ruyi 集成了主流的模拟器，满足用户需求
+  - QEMU 系列：包含 qemu-system-riscv-upstream（全系统模拟器，支持完整 RISC-V 核心与外设模拟，可运行完整操作系统）和 qemu-user-riscv-upstream（用户态模拟器，可直接在 x86/ARM 主机上运行 RISC-V 二进制程序）。
+  QEMU 平头哥优化版：提供 qemu-user-riscv-xthead 专用包。
+  - Box64：提供 box64-upstream 多版本预编译包，可在 RISC-V 64 位系统上转译 x86_64 应用。
+- board-image(镜像)：
+board-image 则为 Milk-V、LicheePi 等开发板提供预编译系统镜像，简化固件烧录与系统部署流程，一站式简化固件烧录、系统部署与环境初始化全流程
+- analyse(分析工具)：
+提供 DynamoRIO RISC-V 移植版 预编译包，用于 RISC-V 程序的性能调优与故障排查。
+
+这是在 x86_64 机器上的一个示例，实际的列表会更长：
+```bash
+$ ruyi list --name-contains ''
+List of available packages:
+
+* source/milkv-duo-examples
+  - 0.20240719.0+git.52ae647a (latest)
+* source/ruyisdk-demo
+  - 0.20231114.0 (latest)
+* source/coremark
+  - 1.0.2-pre.20230125 (prerelease, latest-prerelease)
+  - 1.0.1 (latest)
+* toolchain/llvm-plct
+  - 17.0.6-ruyi.20240511 (latest)
+* toolchain/llvm-upstream
+  - 17.0.5-ruyi.20231121 (latest) slug: llvm-upstream-20231121
+* toolchain/gnu-milkv-milkv-duo-elf-bin
+  - 0.20240731.0+git.67688c7335e7 (latest)
+* analyzer/dynamorio-riscv
+  - 10.93.19979-ruyi.20240914 (latest, no binary for current host)
+  - 10.0.19748-ruyi.20240128 (no binary for current host)
+* board-image/uboot-revyos-sipeed-lc4a-8g
+  - 0.20240127.0 (latest)
+* board-image/uboot-oerv-sipeed-lpi4a-8g
+  - 0.2309.1 (latest)
+* board-image/canmv-linux-sdk-demo-canaan-k230d-rv64ilp32
+  - 0.20240731.0 (latest)
+  - 0.20240717.0 ()
+* emulator/qemu-user-riscv-xthead
+  - 6.1.0-ruyi.20231207+g03813c9fe8 (latest)
+* emulator/box64-upstream
+  - 0.3.1-pre.ruyi.20240901+git.9178effd (prerelease, latest-prerelease, no binary for current host)
+  - 0.3.0-ruyi.20240718 (latest, no binary for current host)
+  - 0.2.9-pre.ruyi.20240702+git.4b0b3fc9 (prerelease, no binary for current host)
+  - 0.2.8-ruyi.20240702 (no binary for current host)
+* emulator/qemu-user-riscv-upstream
+  - 8.2.0-ruyi.20240128 (latest)
+  - 8.1.2-ruyi.20231121 ()
+* extra/wps-office
+  - 12.1.0-r.17900 (latest)
+  - 12.1.0-r.17885 ()
+```
+list 命令支持 --verbose/-v 参数输出软件源的详细信息。因完整输出内容较多，建议配合 --name-contains 等筛选参数使用，或将结果重定向至文件或工具查看。
+输出中形如 toolchain/llvm-plct 的内容为软件包名（install 安装时需指定），多数情况下可直接使用 / 后的名称（如 llvm-plct）。包名后为版本号列表，可用于指定安装版本；版本号括号内为该版本的附加说明信息。
+## 软件包符号说明
+软件包的版本号严格遵循 Semver 的规范，这使它们和上游版本可能有一些差别。
+
+软件包分为正式发布的软件包和预发布的软件包（prerelease），预发布的软件包的释出会比上游正式发布该版本要早，但是修复了最新已发布版本的 bug。
+
+使用 ruyi list 命令列出所有可用的软件包，注意即使某个软件包/版本并不支持当前架构的系统，它依然会被列出。
+|符号    |含义        |
+|--------|------------|
+| latest | 用于标记某个软件包的最新版本，这也是 install 命令默认安装的版本。 |  
+|prerelease|  预发布的版本。这意味着该软件包先于上游发布了这一版本，|
+|latest-prerelease|最新的预发布版本，。在允许安装预发布版本，且该版本比 latest 版本更新时，这会是 install 命令默认安装的版本。|
+|no binary for current host|表示该软件包版本没有提供用于本机架构的二进制包。|
