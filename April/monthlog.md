@@ -40,7 +40,7 @@
 - 上游qemu版本较低，不支持rv23
 
 ## PR
-eclipse v0.1.3报告[PR 7](https://github.com/ruyisdk-test/ruyisdk-eclipse-plugins-test/pull/7)
+eclipse v0.1.3报告[PR 7](https://github.com/ruyisdk-test/ruyisdk-eclipse-plugins-test/pull/7)和[v0.1.3 report](https://github.com/qingwan12138/PLCT-WORK/blob/main/April/eclipse%E6%B5%8B%E8%AF%95/v0.1.3%20eclipse%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)
 ### 对ruyisdk-eclipse-plugins-0.1.3的测试用例报告
 #### 主要内容
 修复内容
