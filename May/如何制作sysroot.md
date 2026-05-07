@@ -115,3 +115,6 @@ $ make menuconfig
 # 编译依赖
 $ make
 ```
+
+## Yocto
+
