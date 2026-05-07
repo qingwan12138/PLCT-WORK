@@ -26,7 +26,7 @@
 ### [Issue 136](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/136)
 - vscode插件更新后通过.vsix重新安装插件后存在缓存问题，仍是上个版本内容，建议加个重启vscode弹窗
 
-### [Issue 137](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/137) 
+### [Issue 135](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/135) 
 - vscode插件的build project按钮在启动虚拟环境后会调用系统编译器，编译为x86架构
 
 ### [Issue 115](https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/115)
