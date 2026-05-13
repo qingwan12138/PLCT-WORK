@@ -1,4 +1,17 @@
 # 本文档详细介绍了几种制作sysroot的方法
+## 从正在运行的 RISC-V 设备 / QEMU 拷贝
+直接把系统里编译必备的头文件、库、链接文件拷贝出来，做成本地 sysroot。
+```
+/
+├── lib
+├── lib64
+└── usr
+    ├── lib
+    ├── lib64
+    ├── include
+    └── bin
+```
+这些就是交叉编译需要的：运行库、动态链接器、头文件、开发库。
 ## 发行版rootfs
 ```bash
 # ubuntu 24.04.4版本 rootfs
@@ -66,6 +79,25 @@ $ cmake .. \
 ```bash
 $ make DESTDIR=/home/cjh/oe-sysroot install
 ```
+## debootstrap
+
+### 安装debootstrap
+```bash
+$ sudo apt update
+$ sudo apt install -y debootstrap  
+$ ubuntu-archive-keyring
+```
+### 生成sysroot
+```bash
+sudo debootstrap \
+  --arch=riscv64 \
+  --variant=minbase \
+  --foreign \
+  --include=libc6-dev,libgcc-dev,libstdc++-dev,zlib1g-dev,libssl-dev,libcurl4-openssl-dev,libsqlite3-dev,libpng-dev \
+  noble \
+  ./riscv64-sysroot \
+  http://ports.ubuntu.com/ubuntu-ports/
+```
 
 ## buildroot
 可以通过 Buildroot 一键配置、自动交叉编译所需的第三方库与系统组件，生成与目标平台完全兼容的依赖文件，解决开发中依赖缺失问题。
@@ -116,5 +148,5 @@ $ make menuconfig
 $ make
 ```
 
-## Yocto
+
 
