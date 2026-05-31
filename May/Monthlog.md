@@ -14,6 +14,7 @@
 
 - https://github.com/ruyisdk-test/ruyisdk-eclipse-plugins-test/pull/8
 - https://github.com/ruyisdk-test/ruyisdk-vscode-extension-test/pull/10
+- https://github.com/ruyisdk-test/ruyisdk-vscode-extension-test/pull/11
 
 ### 其他交付物
 
@@ -32,6 +33,7 @@ ruyisdk-vscode-extension 仓库
 - https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/162 ruyi-venv创建过程时default默认情况下sysroot配置消失
 - https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/168 新闻内容乱行排列
 - https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/169 多版本管理中路径检测弹窗i18n
+- https://github.com/ruyisdk/ruyisdk-vscode-extension/issues/171 在无网络状态下，插件新闻无法离线渲染以及加载出中英文按钮
 
 #### 文档
 
