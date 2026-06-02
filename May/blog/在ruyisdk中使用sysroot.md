@@ -7,31 +7,37 @@
 $ wget https://releases.openruyi.cn/creek/2026.04/rva23/openRuyi-2026.04-rootfs-oci.tar.zst
 ```
 
-### 配置 Linux 机制binfmt_misc(等待ruyi-qemu更新，此处是8.2版本，暂不支持RVA23)
+### 安装 ruyi-qemu (user 模式)
+```bash
+$ ruyi install qemu-user-riscv-upstream
+# info: package qemu-user-riscv-upstream-11.0.0-ruyi.20260421 installed to /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421
+```
+
+### 配置 Linux 机制 binfmt_misc
 #### 确认 ruyi-qemu 可执行文件的位置
 ```bash
-$ ls /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/bin/qemu-riscv64 
+$ ls /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/bin/qemu-riscv64 
 ```
 
 #### 建立配置目录
 ```bash
-$ mkdir -p /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/etc/binfmt.d/
+$ mkdir -p /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/etc/binfmt.d/
 ```
 #### 写入配置文件
 ```bash
-$ nano /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/etc/binfmt.d/qemu-riscv64.conf
-$ :ruyi-qemu-riscv64:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xf3\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/bin/qemu-riscv64:POCF
+$ nano /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/etc/binfmt.d/qemu-riscv64.conf
+$ :ruyi-qemu-riscv64:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xf3\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/bin/qemu-riscv64:POCF
 ```
 #### 将其部署到系统
 ```bash
-$ sudo cp /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/etc/binfmt.d/qemu-riscv64.conf /etc/binfmt.d/qemu-riscv64.conf
+$ sudo cp /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/etc/binfmt.d/qemu-riscv64.conf /etc/binfmt.d/qemu-riscv64.conf
 $ sudo systemctl restart systemd-binfmt
 ```
 #### 检查状态
 ```bash
 $ cat /proc/sys/fs/binfmt_misc/ruyi-qemu-riscv64
 enabled
-interpreter /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-8.2.0-ruyi.20240128/bin/qemu-riscv64
+interpreter /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421/bin/qemu-riscv64
 flags: POCF
 offset 0
 magic 7f454c460201010000000000000000000200f300
@@ -45,7 +51,7 @@ $ sudo chroot ~/openRuyi-2026.04-rootfs-oci /bin/bash
 ## Ruyi-venv中调用OpenRuyi rootfs
 ### Ruyi相关命令
 ```bash
-$ ruyi venv -h
+# ruyi venv -h
 cjh@cjh:~/桌面$ ruyi venv -h
 用法：ruyi venv [-h] [--name NAME] [--toolchain TOOLCHAIN] [--emulator EMULATOR]
              [--with-sysroot] [--without-sysroot]
@@ -83,7 +89,7 @@ cjh@cjh:~/桌面$ ruyi venv -h
 ### 通过软连接的方式创建 ruyi-venv(--symlink-sysroot-from-dir)
 该命令不复制文件，此时虚拟环境中的 sysroot 目录实际上是一个软链接，指向你指定的物理目录，但如果你删除了原始目录，虚拟环境就坏了，并且在虚拟环境里误删文件会破坏原始数据。
 ```bash
-$ cjh@cjh:~/桌面/TMP$ ruyi venv -t gnu-plct --symlink-sysroot-from-dir /home/cjh/openRuyi-2026.04-rootfs-oci generic  ./my_venv
+$ ruyi venv -t gnu-plct --symlink-sysroot-from-dir /home/cjh/openRuyi-2026.04-rootfs-oci generic  ./my_venv
 ```
 
 ### 补充相关依赖
