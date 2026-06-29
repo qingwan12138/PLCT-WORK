@@ -7,7 +7,7 @@
 $ wget https://releases.openruyi.cn/creek/2026.04/rva23/openRuyi-2026.04-rootfs-oci.tar.zst
 ```
 
-### 安装 ruyi-qemu (user 模式)
+### 安装 ruyi-qemu 
 ```bash
 $ ruyi install qemu-user-riscv-upstream
 # info: package qemu-user-riscv-upstream-11.0.0-ruyi.20260421 installed to /home/cjh/.local/share/ruyi/binaries/x86_64/qemu-user-riscv-upstream-11.0.0-ruyi.20260421
@@ -52,12 +52,13 @@ $ sudo chroot ~/openRuyi-2026.04-rootfs-oci /bin/bash
 ### Ruyi相关命令
 ```bash
 # ruyi venv -h
-cjh@cjh:~/桌面$ ruyi venv -h
+$ ruyi venv -h
 用法：ruyi venv [-h] [--name NAME] [--toolchain TOOLCHAIN] [--emulator EMULATOR]
              [--with-sysroot] [--without-sysroot]
              [--copy-sysroot-from-pkg COPY_SYSROOT_FROM_PKG]
              [--copy-sysroot-from-dir COPY_SYSROOT_FROM_DIR]
              [--symlink-sysroot-from-dir SYMLINK_SYSROOT_FROM_DIR]
+             [--project-sysroot-from-rootfs PROJECT_SYSROOT_FROM_ROOTFS]
              [--extra-commands-from EXTRA_COMMANDS_FROM]
              profile dest
 
@@ -77,19 +78,40 @@ cjh@cjh:~/桌面$ ruyi venv -h
   --copy-sysroot-from-pkg, --sysroot-from COPY_SYSROOT_FROM_PKG
                         要使用的 sysroot 软件包的指示表达式（atom），如工具链软件包也内置了 sysroot 则优先于它
   --copy-sysroot-from-dir COPY_SYSROOT_FROM_DIR
-                        Copy the sysroot from the given directory into the
-                        virtual environment
+                        将给定目录中的 sysroot 复制到虚拟环境中
   --symlink-sysroot-from-dir SYMLINK_SYSROOT_FROM_DIR
-                        Symlink the virtual environment's sysroot to the given
-                        existing directory
+                        将虚拟环境的 sysroot 符号链接到给定的现有目录
+  --project-sysroot-from-rootfs PROJECT_SYSROOT_FROM_ROOTFS
+                        从给定的发行版 rootfs 目录投影构建用 sysroot
   --extra-commands-from EXTRA_COMMANDS_FROM
                         要向新虚拟环境添加额外命令，这些命令的提供者软件包的指示表达式（atoms）
 ```
 
-### 通过软连接的方式创建 ruyi-venv(--symlink-sysroot-from-dir)
+### 从软件包复制 sysroot (--copy-sysroot-from-pkg)
+从已安装的 sysroot 软件包复制 sysroot 到虚拟环境中。该方式会复制目标软件包中的整个树到虚拟环境中。
+
+```bash
+$ ruyi venv -t gnu-plct --copy-sysroot-from-pkg gnu-plct generic ./my_venv
+```
+
+### 从目录复制 sysroot (--copy-sysroot-from-dir)
+将给定目录中的 sysroot 完整复制到虚拟环境中。该选项会忠实复制整棵目录树。
+
+```bash
+$ ruyi venv -t gnu-plct --copy-sysroot-from-dir /home/cjh/openRuyi-2026.04-rootfs-oci generic ./my_venv
+```
+
+### 通过软连接的方式创建 ruyi-venv (--symlink-sysroot-from-dir)
 该命令不复制文件，此时虚拟环境中的 sysroot 目录实际上是一个软链接，指向你指定的物理目录，但如果你删除了原始目录，虚拟环境就坏了，并且在虚拟环境里误删文件会破坏原始数据。
 ```bash
 $ ruyi venv -t gnu-plct --symlink-sysroot-from-dir /home/cjh/openRuyi-2026.04-rootfs-oci generic  ./my_venv
+```
+
+### 从发行版 rootfs 投影 sysroot (--project-sysroot-from-rootfs)
+从给定的发行版 rootfs 目录投影构建用 sysroot。Ruyi 会复制 include、lib*、usr/include、usr/lib*、usr/share、bin、sbin 等常见交叉构建目录，并跳过不可读或不受支持的文件。相比直接复制整个 rootfs，该方式更轻量且更适合交叉编译场景。
+
+```bash
+$ ruyi venv -t gnu-plct --project-sysroot-from-rootfs /home/cjh/openRuyi-2026.04-rootfs-oci generic ./my_venv
 ```
 
 ### 补充相关依赖
