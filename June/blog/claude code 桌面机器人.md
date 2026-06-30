@@ -50,4 +50,21 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 ### 库安装
 进入工具→库管理器(左侧列表第3个图标)，安装Adafruit GFX Library和Adafruit ST7735 and ST7789 Library
 
+![alt text](<./img/Adafruit GFX Library.png>)
 
+![alt text](<./img/Adafruit ST7735 and ST7789 Library.png>)
+
+### 配置主板设置
+
+![alt text](./img/配置图.png)
+
+### 编译上传
+
+```bash
+# 克隆项目
+$ git clone https://github.com/yousifamanuel/clawd-mochi.git
+```
+
+通过 USB-C 连接 ESP32 开发板，在工具菜单栏选定对应端口后点击上传按钮，日志出现 RTS 引脚复位提示即代表固件上传完成。
+
+![alt text](./img/cc.jpg)
